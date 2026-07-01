@@ -325,9 +325,7 @@
                 <li>
                   <span class="nope">strikethrough</span>: did not make WC
                 </li>
-                <li>
-                  <span class="eliminated">red</span>: did not make Round of 32
-                </li>
+                <li><span class="eliminated">red</span>: eliminated</li>
                 <li><span class="highlight">blue</span>: in Round of 16</li>
               </ul>
             </caption>
@@ -522,29 +520,37 @@
 
       const notInWC = ["Italy", "Denmark"];
       const notIn32 = [
-        "Czechia",
-        "South Korea",
-        "Qatar",
-        "Haiti",
-        "Scotland",
-        "Türkiye",
         "Curaçao",
-        "Tunisia",
+        "Czechia",
+        "Haiti",
         "Iran",
-        "New Zealand",
-        "Saudi Arabia",
-        "Uruguay",
         "Iraq",
         "Jordan",
-        "Uzbekistan",
+        "New Zealand",
         "Panama",
+        "Qatar",
+        "Saudi Arabia",
+        "Scotland",
+        "South Korea",
+        "Tunisia",
+        "Türkiye",
+        "Uruguay",
+        "Uzbekistan",
       ];
       const actualRound16 = [
+        "Brazil",
         "Canada",
         "Morocco",
-        "Paraguay",
-        "Brazil",
         "Norway",
+        "Paraguay",
+      ];
+      const notIn16 = [
+        "Côte d'Ivoire",
+        "Germany",
+        "Japan",
+        "Netherlands",
+        "South Africa",
+        "Sweden",
       ];
       const officialSet = new Set(actualRound16);
 
@@ -591,7 +597,7 @@
             cells += `<td class="highlight">${team}</td>`;
           } else if (notInWC.includes(team)) {
             cells += `<td class="nope">${team}</td>`;
-          } else if (notIn32.includes(team)) {
+          } else if ([...notIn32, ...notIn16].includes(team)) {
             cells += `<td class="eliminated">${team}</td>`;
           } else {
             cells += `<td>${team}</td>`;
